@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      includeAssets: [], // 未作成のファイルへの参照を削除
       manifest: {
         name: 'Info-Hub Task Manager',
         short_name: 'InfoHub',
@@ -23,20 +23,19 @@ export default defineConfig({
             src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
           }
         ]
       }
     })
   ],
+  // エイリアス設定をよりシンプルに
   resolve: {
     alias: {
       '@': '/src',
     },
   },
+  // ビルド設定を明示
+  build: {
+    outDir: 'dist',
+  }
 });
